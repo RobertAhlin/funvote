@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administratör</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="login-section">
+    <h1>Admin Login</h1>
+    <input type="password" id="adminPassword" placeholder="Ange lösenord">
+    <button onclick="authenticate()">Logga in</button>
+    <p id="loginMessage"></p>
+  </div>
+
+  <div id="admin-section" style="display: none;">
+    <h1>Administratörsgränssnitt</h1>
+    <button onclick="resetVotes()">Nollställ röster</button>
+    <button onclick="toggleVoting()">Växla röstsättning</button>
+    <p id="status"></p>
+    <div>
+      <h3>Redigera alternativ</h3>
+      <input type="text" id="newOption" placeholder="Nytt alternativ">
+      <button onclick="addOption()">Lägg till</button>
+    </div>
+    <ul id="optionsList"></ul>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    checkAdminAccess();
+  </script>
+</body>
+</html>
