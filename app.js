@@ -1,15 +1,32 @@
-// Konstanter för Local Storage-nycklar och lösenord
-const VOTING_KEY = 'voting_data';
-const LOCK_KEY = 'voting_locked';
-const USER_VOTED = 'user_voted';
-const ADMIN_PASSWORD = 'hemligt123';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Hämtar omröstningsdata från Local Storage
-function getVotingData() {
-  return JSON.parse(localStorage.getItem(VOTING_KEY)) || {
-    options: ['Alternativ 1', 'Alternativ 2', 'Alternativ 3'],
-    votes: [0, 0, 0],
-  };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyANwvt-UtqTcOFwBVlNCigwph-7QET4sN4",
+  authDomain: "funvote-c010e.firebaseapp.com",
+  projectId: "funvote-c010e",
+  storageBucket: "funvote-c010e.firebasestorage.app",
+  messagingSenderId: "60234027589",
+  appId: "1:60234027589:web:bbd4272e5591d3f041092c",
+  measurementId: "G-R3M3SMKRY6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+async function getVotingData() {
+    const snapshot = await get(ref(db, "votingData"));
+    return snapshot.exists() ? snapshot.val() : { options: [], votes: [] };
+  }
+  
+  async function saveVotingData(data) {
+    await set(ref(db, "votingData"), data);
 }
 
 // Sparar omröstningsdata till Local Storage
