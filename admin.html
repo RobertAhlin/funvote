@@ -7,29 +7,22 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="login-section">
-    <h1>Admin Login</h1>
-    <input type="password" id="adminPassword" placeholder="Ange lösenord">
-    <button onclick="authenticate()">Logga in</button>
-    <p id="loginMessage"></p>
-  </div>
-
-  <div id="admin-section" style="display: none;">
-    <h1>Administratörsgränssnitt</h1>
-    <button onclick="resetVotes()">Nollställ röster</button>
-    <button onclick="toggleVoting()">Växla röstsättning</button>
-    <p id="status"></p>
-    <div>
-      <h3>Redigera alternativ</h3>
-      <input type="text" id="newOption" placeholder="Nytt alternativ">
-      <button onclick="addOption()">Lägg till</button>
+    <div id="login-section">
+      <h1>Admin Login</h1>
+      <input type="password" id="adminPassword" placeholder="Lösenord">
+      <button onclick="authenticate()">Logga in</button>
+      <p id="loginMessage"></p>
     </div>
-    <ul id="optionsList"></ul>
-  </div>
-
-  <script src="app.js"></script>
-  <script>
-    checkAdminAccess();
-  </script>
-</body>
-</html>
+  
+    <div id="admin-section" style="display: none;">
+      <h1>Admin Panel</h1>
+      <p id="status"></p>
+      <ul id="optionsList"></ul>
+      <button onclick="resetVotes()">Nollställ Röster</button>
+      <button onclick="toggleVoting()">Lås/Öppna Omröstning</button>
+      <input type="text" id="newOption" placeholder="Nytt Alternativ">
+      <button onclick="addOption()">Lägg till Alternativ</button>
+      <button onclick="logoutAdmin()">Logga ut</button>
+    </div>
+  </body>
+  </html>

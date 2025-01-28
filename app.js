@@ -1,3 +1,9 @@
+// Konstanter för Local Storage-nycklar och lösenord
+const VOTING_KEY = 'voting_data';
+const LOCK_KEY = 'voting_locked';
+const USER_VOTED = 'user_voted';
+const ADMIN_PASSWORD = 'hemligt123';
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -20,6 +26,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+// Hämtar omröstningsdata från Local Storage
 async function getVotingData() {
     const snapshot = await get(ref(db, "votingData"));
     return snapshot.exists() ? snapshot.val() : { options: [], votes: [] };
@@ -27,12 +34,7 @@ async function getVotingData() {
   
   async function saveVotingData(data) {
     await set(ref(db, "votingData"), data);
-}
-
-// Sparar omröstningsdata till Local Storage
-function saveVotingData(data) {
-  localStorage.setItem(VOTING_KEY, JSON.stringify(data));
-}
+  }
 
 // Kontrollera omröstningsstatus
 function isVotingLocked() {
