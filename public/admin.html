@@ -8,15 +8,22 @@
 </head>
 <body>
     <h1>Admin Panel</h1>
-
+    <div style="max-width: 60%; margin: 0 auto;">
+    <hr>
     <!-- Lösenordsinmatning -->
     <input type="password" id="password" placeholder="Ange admin-lösenord">
+    <hr>
+    <h2>Hantera omröstning</h2>
+    <button id="lockButton" onclick="toggleLock()">Lås omröstning</button>
+    <p id="lockStatus"></p>
 
+    <hr>
     <!-- Redigera Fråga -->
     <h2>Ändra Fråga</h2>
     <input type="text" id="questionInput" placeholder="Ny fråga">
     <button onclick="updateQuestion()">Uppdatera Fråga</button>
 
+    <hr
     <!-- Hantera Svarsalternativ -->
     <h2>Hantera Svar</h2>
     <ul id="optionsList"></ul>
@@ -24,11 +31,13 @@
     <input type="text" id="newOption" placeholder="Nytt svarsalternativ">
     <button onclick="addOption()">Lägg till Alternativ</button>
 
+    <hr>
     <!-- Återställ röster -->
     <h2>Återställ</h2>
     <button onclick="resetVotes()">Återställ röster</button>
 
     <p id="adminMessage"></p>
     <script src="admin.js"></script>
+    </div>
 </body>
 </html>

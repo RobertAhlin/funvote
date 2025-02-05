@@ -26,6 +26,8 @@ const hasVoted = (ip) => votes.voters.includes(ip);
 
 // API: Skicka in en röst
 app.post('/vote', (req, res) => {
+    if (votes.isLocked) return res.status(403).json({ message: 'Omröstningen är låst!' });
+
     const { option } = req.body;
     const ip = req.ip;
 
@@ -88,6 +90,16 @@ app.post('/admin/remove-option', (req, res) => {
     delete votes.options[option];
     saveData(votes);
     res.json({ message: 'Alternativ borttaget!' });
+});
+
+// API: Lås/Lås upp omröstning
+app.post('/admin/toggle-lock', (req, res) => {
+    const { password } = req.body;
+    if (password !== process.env.ADMIN_PASSWORD) return res.status(401).json({ message: 'Fel lösenord!' });
+
+    votes.isLocked = !votes.isLocked;
+    saveData(votes);
+    res.json({ message: votes.isLocked ? 'Omröstningen är nu LÅST' : 'Omröstningen är nu ÖPPEN' });
 });
 
 // Starta servern **(nu endast en gång!)**
