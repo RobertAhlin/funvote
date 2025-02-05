@@ -9,27 +9,36 @@ document.addEventListener("DOMContentLoaded", async () => {
             labels: Object.keys(data.options),
             datasets: [{
                 data: Object.values(data.options),
-                backgroundColor: ["#ccdddd", "#00f2fe", "#36a2eb", "#ffcd56"],
+                backgroundColor: ["#4facfe", "#00f2fe", "#36a2eb"],
                 borderRadius: 5
             }]
         },
         options: {
             responsive: true,
             plugins: {
-                legend: { display: false }, // Tar bort lilla blåa rutan (legend)
-                tooltip: { enabled: true } // Visar info när man hovrar över staplarna
+                legend: { display: false },
+                tooltip: { enabled: true }
             },
             scales: {
                 x: {
-                    grid: { display: false }, // Tar bort horisontella streck
+                    grid: {
+                        drawBorder: true, // Behåller bottenlinjen
+                        drawOnChartArea: false, // Ser till att bara bottenlinjen visas
+                        drawTicks: false,
+                        color: "#ccc" // Bottenlinjen blir ljusgrå
+                    },
                     ticks: {
-                        font: { size: 18, weight: "bold" }, // Större och fetare text
+                        font: { size: 16, weight: "bold" },
                         color: "#333"
                     }
                 },
                 y: {
-                    grid: { display: false }, // Tar bort vertikala streck
-                    ticks: { display: false } // Döljer siffrorna på y-axeln
+                    grid: {
+                        drawBorder: false, // Tar bort vänstra linjen
+                        drawOnChartArea: false, // Tar bort horisontella linjer
+                        drawTicks: false
+                    },
+                    ticks: { display: true } // Visar siffrorna på y-axeln
                 }
             }
         }
