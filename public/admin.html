@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Admin Panel</h1>
+
+    <!-- Lösenordsinmatning -->
+    <input type="password" id="password" placeholder="Ange admin-lösenord">
+
+    <!-- Redigera Fråga -->
+    <h2>Ändra Fråga</h2>
+    <input type="text" id="questionInput" placeholder="Ny fråga">
+    <button onclick="updateQuestion()">Uppdatera Fråga</button>
+
+    <!-- Hantera Svarsalternativ -->
+    <h2>Hantera Svar</h2>
+    <ul id="optionsList"></ul>
+    
+    <input type="text" id="newOption" placeholder="Nytt svarsalternativ">
+    <button onclick="addOption()">Lägg till Alternativ</button>
+
+    <!-- Återställ röster -->
+    <h2>Återställ</h2>
+    <button onclick="resetVotes()">Återställ röster</button>
+
+    <p id="adminMessage"></p>
+    <script src="admin.js"></script>
+</body>
+</html>
