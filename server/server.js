@@ -6,7 +6,6 @@ import dotenv from 'dotenv';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server körs på port ${PORT}`));
 
 dotenv.config();
 
@@ -91,5 +90,5 @@ app.post('/admin/remove-option', (req, res) => {
     res.json({ message: 'Alternativ borttaget!' });
 });
 
-// Starta servern
+// Starta servern **(nu endast en gång!)**
 app.listen(PORT, () => console.log(`Server körs på port ${PORT}`));
