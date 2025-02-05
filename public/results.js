@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             labels: Object.keys(data.options),
             datasets: [{
                 data: Object.values(data.options),
-                backgroundColor: ["#4facfe", "#00f2fe", "#36a2eb", "#ffcd56"],
+                backgroundColor: ["#ccdddd", "#00f2fe", "#36a2eb", "#ffcd56"],
                 borderRadius: 5
             }]
         },

@@ -2,10 +2,11 @@
   "question": "Hur känner du dig idag?",
   "options": {
     "Nyfiken!": 7,
-    "Vad gör jag här?": 3,
+    "Vad gör jag här?": 4,
     "Behöver mer kaffe!": 5
   },
   "voters": [
-    "::15"
+    "::15",
+    "::1"
   ]
 }
